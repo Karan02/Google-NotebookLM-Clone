@@ -4,11 +4,11 @@
   "description": "Backend for PDF Q&A using OpenAI embeddings",
   "main": "dist/server.js",
   "type": "module",
-  "scripts": {
-    "start": "node dist/server.js",
-    "dev": "ts-node server.ts",
-    "build": "tsc server.ts"
-  },
+"scripts": {
+  "build": "tsc",
+  "start": "node dist/server.js",
+  "dev": "ts-node-dev --respawn --transpile-only server.ts"
+},
   "dependencies": {
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
@@ -20,9 +20,12 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.19",
     "@types/express": "^4.17.17",
     "@types/multer": "^1.4.7",
     "@types/node": "^20.4.2",
+    "@types/pdf-parse": "^1.1.5",
+    "@types/uuid": "^10.0.0",
     "ts-node": "^10.9.1",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.1.6"
