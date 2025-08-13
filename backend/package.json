@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node dist/server.js",
     "dev": "ts-node server.ts",
-    "build": "tsc"
+    "build": "tsc server.ts"
   },
   "dependencies": {
     "body-parser": "^1.20.2",

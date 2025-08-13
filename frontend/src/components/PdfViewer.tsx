@@ -1,6 +1,6 @@
 import React, { forwardRef, useImperativeHandle, useRef, useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
-
+import { API_BASE } from "../services/api";
 // Wire worker for react-pdf
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
@@ -16,7 +16,7 @@ type Props = {
 const PdfViewer = forwardRef<PdfViewerHandle, Props>(({ fileUrl }, ref) => {
   const [numPages, setNumPages] = useState<number | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const fileUrlComplete = `http://localhost:5000${fileUrl}`;
+  const fileUrlComplete = `${API_BASE}${fileUrl}`;
   useImperativeHandle(ref, () => ({
     scrollToPage: (page) => {
       const el = containerRef.current?.querySelector<HTMLDivElement>(`#pdf-page-${page}`);

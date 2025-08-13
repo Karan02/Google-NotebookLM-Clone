@@ -1,4 +1,4 @@
-# Take-Home Assignment: Build a Google NotebookLM Clone
+# Take-Home Assignment: Build a Google NotebookLM Clone ( Add your own env file in backend for openAI)
 
 ## Objective
 

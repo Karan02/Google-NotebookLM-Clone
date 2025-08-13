@@ -1,10 +1,10 @@
-const API_BASE = "http://localhost:5000/api"; // Your Node backend
+export const API_BASE = "http://localhost:5000"; // Your Node backend
 
 export const uploadPdf = async (file: File) => {
   const formData = new FormData();
   formData.append("pdf", file);
 
-  const res = await fetch(`${API_BASE}/upload`, {
+  const res = await fetch(`${API_BASE}/api/upload`, {
     method: "POST",
     body: formData
   });
@@ -13,7 +13,7 @@ export const uploadPdf = async (file: File) => {
 };
 
 export const askQuestion = async (question: string,pdfId:string) => {
-  const res = await fetch(`${API_BASE}/chat`, {
+  const res = await fetch(`${API_BASE}/api/chat`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ question,pdfId })
