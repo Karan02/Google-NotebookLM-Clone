@@ -1,10 +1,10 @@
-Take-Home Assignment: Build a Google NotebookLM Clone
+# Take-Home Assignment: Build a Google NotebookLM Clone
 
-Objective
+## Objective
 
 Develop an web-based application using React or Angular and a backend of your choosing, that enables users to upload and interact with PDF documents through a chat interface. The system should efficiently extract relevant information while minimizing token usage.
 
-Feature Requirements
+## Feature Requirements
 
 PDF Upload and Viewing
 
@@ -12,19 +12,19 @@ Implement functionality for users to upload large PDF files.
 
 Integrate a built-in PDF viewer that allows users to navigate through the uploaded document.
 
-Chat Interface
+## Chat Interface
 
 Develop a chat screen where users can inquire about the contents of the uploaded PDF and pose other related questions.
 
 Ensure that responses are efficient and utilize a minimal number of tokens.
 
-Citation \& Navigation
+## Citation \& Navigation
 
 Provide citations in the form of buttons within each response, referencing specific pages of the PDF.
 
 Clicking a citation button should open or scroll to the referenced page in the PDF viewer.
 
-Implementation Hints
+## Implementation Hints
 
 AI Integration: Consider leveraging available AI APIs and tools to facilitate efficient data extraction and interaction.
 
