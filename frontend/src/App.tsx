@@ -26,6 +26,7 @@ export default function App() {
       <div className="header">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="#6ea8ff"><path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm8 1.5V8h4.5"></path></svg>
         <h1>NotebookLM-style PDF Chat</h1>
+        <button onClick={() => window.location.reload()}>Reload Page</button>
         {pdfId && <span className="small">• PDF ID: {pdfId}</span>}
       </div>
 
