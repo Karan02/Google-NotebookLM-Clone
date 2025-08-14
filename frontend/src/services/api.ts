@@ -1,4 +1,4 @@
-export const API_BASE = "https://google-notebooklm-clone.onrender.com/" // "http://localhost:5000"; // Your Node backend
+export const API_BASE = "https://google-notebooklm-clone.onrender.com/"; // "http://localhost:5000";   // Your Node backend
 
 export const uploadPdf = async (file: File) => {
   const formData = new FormData();
