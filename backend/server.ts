@@ -8,6 +8,7 @@ import { v4 as uuidv4 } from "uuid";
 import dotenv from "dotenv";
 import pdfParse from "pdf-parse";
 import OpenAI from "openai";
+import * as pdfjsLib from "pdfjs-dist/legacy/build/pdf.mjs";
 
 dotenv.config();
 
@@ -59,6 +60,30 @@ function cosineSim(a: number[], b: number[]) {
   return dot / (Math.sqrt(na) * Math.sqrt(nb));
 }
 
+
+async function extractPages(buffer: Buffer) {
+  // Convert Node Buffer → Uint8Array
+  const uint8Array = new Uint8Array(buffer);
+
+  const loadingTask = pdfjsLib.getDocument({ data: uint8Array });
+  const pdf = await loadingTask.promise;
+
+  let pages: { pageNumber: number; text: string }[] = [];
+
+  for (let i = 1; i <= pdf.numPages; i++) {
+    const page = await pdf.getPage(i);
+    const textContent = await page.getTextContent();
+
+    const pageText = textContent.items
+      .map(item => ('str' in item ? item.str : ''))
+      .join(' ');
+
+    pages.push({ pageNumber: i, text: pageText.trim() });
+  }
+
+  return pages;
+}
+
 // Routes
 app.post("/api/upload", upload.single("pdf"), async (req, res) => {
   try {
@@ -69,8 +94,7 @@ app.post("/api/upload", upload.single("pdf"), async (req, res) => {
 
     // Extract text from PDF
     const dataBuffer = fs.readFileSync(savedPath);
-    const pdfData = await pdfParse(dataBuffer);
-    const pages = pdfData.text.split("\f").map((t, i) => ({ pageNumber: i + 1, text: t.trim() }));
+    const pages = await extractPages(dataBuffer);
 
     if (!pages.length) return res.status(400).json({ error: "No extractable text found" });
 
