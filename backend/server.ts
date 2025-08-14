@@ -132,7 +132,7 @@ app.post("/api/chat", async (req, res) => {
 
     const systemPrompt = "Answer concisely using only the context. Cite pages like [page N].";
     const chatResp = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
+      model: "gpt-4",
       messages: [
         { role: "system", content: systemPrompt },
         { role: "user", content: `Question: ${question}\n\nContext:\n${context}` }
